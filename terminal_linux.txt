@@ -1,0 +1,130 @@
+
+most important:
+
+cd ~/Projekte/Semester_02/OOP/PROJEKT
+ls Debug
+./Debug/PROJEKT
+./Debug/PROJEKT datei.dat
+
+
+
+
+
+cheat sheet:
+
+C++ / Linux / Eclipse Cheat Sheet
+
+1. Wo bin ich?
+pwd
+
+2. Dateien im aktuellen Ordner anzeigen
+ls
+
+3. In einen Ordner wechseln
+cd ordner
+
+Beispiel:
+cd ~/Projekte/Semester_02/OOP/01_03
+
+4. Eine Ebene zurück
+cd ..
+
+5. Ins Home-Verzeichnis
+cd ~
+
+--------------------------------
+
+ECLIPSE-PROJEKT
+
+Eclipse legt die fertige Datei meistens in:
+Debug/
+
+Inhalt anzeigen:
+ls Debug
+
+Typisch:
+main.o
+ggts.o
+pbma.o
+01_03
+
+.o = Objektdateien / Zwischenstufen
+01_03 = fertiges ausführbares Programm
+
+--------------------------------
+
+PROGRAMM STARTEN
+
+Aus Projektordner:
+./Debug/01_03
+
+Mit Argument:
+./Debug/01_03 ggts.dat
+
+Wenn du schon in Debug bist:
+cd Debug
+./01_03
+
+--------------------------------
+
+WICHTIG
+
+Linux:
+./programm
+
+Windows:
+.\programm.exe
+
+Unter Linux meistens KEIN .exe
+
+--------------------------------
+
+KOMPILIEREN MIT MAKE
+
+Im Debug-Ordner:
+cd Debug
+make
+
+oder:
+make all
+
+Alles neu bauen:
+make clean
+make
+
+--------------------------------
+
+OHNE ECLIPSE KOMPILIEREN
+
+Eine Datei zu .o:
+g++ -c main.cpp -o main.o
+
+Mehrere .o-Dateien linken:
+g++ main.o ggts.o pbma.o -o programm
+
+Starten:
+./programm
+
+Direkt alles kompilieren:
+g++ main.cpp ggts.cpp pbma.cpp -o programm
+
+--------------------------------
+
+32-BIT KOMPILIEREN
+
+g++ -m32 main.cpp -o groessen
+
+Starten:
+./groessen
+
+--------------------------------
+
+MERKSATZ
+
+.cpp
+  ↓ kompilieren
+.o
+  ↓ linken
+ausführbares Programm
+
+.o-Dateien startet man NICHT direkt.
