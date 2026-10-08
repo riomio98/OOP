@@ -48,16 +48,5 @@ public:
 };
 
 
-int main()
-{
-    Time t;
-    t.addHours(1);
-    cout << t.getHour() << endl;
-    cout << t.getMinute() << endl;
-    cout << t.getSecond() << endl;
-
-
-    return 0;
-}
 
 
