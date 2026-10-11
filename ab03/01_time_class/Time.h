@@ -8,34 +8,32 @@
 #ifndef TIME_H_
 #define TIME_H_
 
-#ifndef TIME_H
-#define TIME_H
+
+#include <cstdint>
 
 class Time
 {
 private:
-    int hour;
-    int minute;
-    int second;
+	uint32_t hour;
+    uint32_t minute;
+    uint32_t second;
 
 public:
-    Time(int hour = 0, int minute = 0, int second = 0);
+    Time(uint32_t hour = 0, uint32_t minute = 0, uint32_t second = 0);
 
-    int getHour() const;
-    int getMinute() const;
-    int getSecond() const;
+    uint32_t getHour() const;
+    uint32_t getMinute() const;
+    uint32_t getSecond() const;
 
-    int justseconds() const;
+    uint32_t justseconds() const;
 
-    bool add_hour(int x);
-    bool add_minute(int x);
-    bool add_second(int x);
+    bool add_hour(uint32_t x);
+    bool add_minute(uint32_t x);
+    bool add_second(uint32_t x);
 
     bool add(const Time& t);
-    int diff(const Time& t) const;
+    uint32_t diff(const Time& t) const;
 };
-
-#endif
 
 
 

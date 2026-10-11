@@ -44,5 +44,10 @@ int main()
     Time c(0, 0, 10);
     cout << "negativ: " << c.add_second(-20) << endl;
 
+    Time d(12,0,0);
+
+    cout << "Overflow-Test: "
+         << d.add_second(2147483647) << endl;
+
     return 0;
 }
