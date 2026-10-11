@@ -2,6 +2,7 @@
 #include "Time.h"
 #include <iostream>
 #include <limits>
+#include <iomanip>
 
 using namespace std;
 
@@ -82,16 +83,9 @@ int64_t Time::diff(const Time& t) const
 
 void Time::print() const
 {
-    cout << hour_ << ":";
-
-    if (minute_ < 10)
-        cout << "0";
-
-    cout << minute_ << ":";
-
-    if (second_ < 10)
-        cout << "0";
-
-    cout << second_;
-    cout << endl;
+    cout << setfill('0')
+         << setw(2) << hour_ << ":"
+         << setw(2) << minute_ << ":"
+         << setw(2) << second_
+         << endl;
 }
