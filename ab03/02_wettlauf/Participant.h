@@ -15,8 +15,12 @@ class Participant
 private:
 	std::string name;
 	Time zeit;
+	static int anz;
 public:
+	//Konstruktor
 	Participant(std::string name);
+	//Destruktor
+	~Participant();
 	//getter
 	std::string get_name() const;
 	Time get_time() const;
