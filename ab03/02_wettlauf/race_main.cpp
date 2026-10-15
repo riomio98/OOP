@@ -22,11 +22,11 @@ int main(int argc, char* argv[])
 	args_t args(argc, argv);
 
 
-	vector<Participant> p;
+	vector<Participant> p(args.len_pos());
 
     for(size_t i = 0; i < args.len_pos(); i++)
     {
-        p.push_back(args.pos(i));
+        p[i].set_name(args.pos(i));
     }
 
     vector<int> zeiten = create_randints(p.size(), 0, 1000);

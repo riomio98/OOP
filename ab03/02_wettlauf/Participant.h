@@ -19,6 +19,7 @@ private:
 public:
 	//Konstruktor
 	Participant(std::string name);
+	Participant();
 	//Destruktor
 	~Participant();
 	//getter
@@ -26,7 +27,7 @@ public:
 	Time get_time() const;
 	//setter
 	void set_time(const Time& t);
-
+	void set_name(std::string name);
 };
 
 

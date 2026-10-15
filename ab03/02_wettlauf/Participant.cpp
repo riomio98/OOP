@@ -10,6 +10,9 @@ Participant::Participant(std::string name)
 	anz += 1;
 	std::cout << "Kostruktor: " <<  anz << std::endl;
 }
+Participant::Participant():Participant("nobody")
+{
+}
 Participant::~Participant()
 {
 	anz-=1;
@@ -22,6 +25,10 @@ std::string Participant::get_name() const
 Time Participant::get_time() const
 {
 	return zeit;
+}
+void Participant:: set_name(std::string name)
+{
+	this->name = name;
 }
 void Participant::set_time(const Time& t)
 {
