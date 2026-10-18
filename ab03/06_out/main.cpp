@@ -15,7 +15,7 @@ private:
 	string arr[3];
 public:
 	Del(string a = "a", string b = "b", string c = "c")
-
+		//:arr{a,b,c}
 	{
 		arr[0] = a;
 		arr[1] = b;
