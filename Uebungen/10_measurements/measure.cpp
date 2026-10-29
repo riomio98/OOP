@@ -15,7 +15,7 @@ Measure::Measure(size_t size)
 	{
 		throw std::runtime_error("invalid size");
 	}
-	_data = new double[_size](0.0);
+	_data = new double[_size]{0.0};
 }
 Measure::~Measure()
 {
@@ -25,7 +25,7 @@ size_t Measure::size() const
 {
 	return _size;
 }
-double Measure::at(size_t idx) const
+double& Measure::at(size_t idx)
 {
 	if(idx >= _size)
 		throw std::runtime_error("invalid index");
@@ -45,7 +45,26 @@ double Measure::mean() const
 }
 Measure::Measure(const Measure& other)
 {
-
+	_size = other._size;
+	_data = new double[_size];
+	for(size_t i = 0; i < _size; i++)
+	{
+		_data[i] = other._data[i];
+	}
 }
 
+Measure& Measure::operator=(const Measure& other)
+{
+	if(this != &other)
+	{
+		delete[] _data;
+		_size = other._size;
+		_data = new double[_size];
+		for(size_t i = 0; i < _size; i++)
+		{
+			_data[i] = other._data[i];
+		}
+	}
+	return *this;
+}
 
