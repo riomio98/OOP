@@ -1,0 +1,8 @@
+Der Compiler meckert schon am Morgen,
+die erste Zeile macht mir Sorgen.
+
+Ich lese nur den ersten Fehler,
+der Rest ist meistens nur Erzaehler.
+
+Ein Breakpoint hier, ein Blick dorthin,
+und ploetzlich ergibt alles Sinn.
