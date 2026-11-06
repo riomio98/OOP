@@ -1,0 +1,25 @@
+Uebungs-Testat 0 (nach der Angabe von Prof. Barth, OOPTestPB0.pdf) -- 90 Minuten
+
+Ablauf wie im echten Testat:
+  1. Repo holen (git clone / git pull), Eclipse-Projekt "testat0" im Ordner anlegen,
+     Linker: -pthread und gtest einstellen.
+  2. Nur simplemath.cpp und Studi.cpp aendern. Die Header und test_*.cpp,
+     alltest.h, gtest_main.cpp duerfen Sie nicht aendern
+     (private Hilfsmethoden in den Headern sind erlaubt).
+  3. Es gibt 10 Unit-Tests, jeder zaehlt 1 Punkt. Speicherfehler = kein Punkt,
+     Kompilierfehler = 0 Punkte insgesamt.
+  4. Am Ende: git status -u, git add testat0, git commit, git push, in Gitea pruefen.
+
+Aufgabe 1 (Tests 1-3): simplemath.cpp -> quadrat, kubik, hoch4 (Prototypen in simplemath.h)
+Aufgabe 2 (Tests 4-10): Studi.cpp -> Klasse Studi (Prototyp in Studi.h)
+
+Hinweise zu Studi:
+  - Als Matrikelnummer werden nur 7-stellige Zahlen (ohne fuehrende Nullen) akzeptiert.
+    Bei Ablehnung bleibt der alte Wert, und es wird false zurueckgegeben.
+  - Wir muessen Arrays von Studis anlegen koennen, die nicht initialisiert werden:
+    dann ist die Matrikelnummer 0 ok.
+  - Beim Kopieren eines Studis wird die Matrikelnummer NICHT mitkopiert.
+  - Achten Sie darauf, den Speicher von _image richtig zu verwalten beim Kopieren,
+    Setzen und Loeschen. Ein Bild im Freispeicher muss in der Kopie seinen
+    eigenen Speicherbereich haben.
+  - Die Tests in test_*.cpp zeigen, was erwartet wird.
