@@ -29,8 +29,9 @@ XYarray::XYarray(const XYarray& other)
     }
     for (size_t i = 0; i < _length; i++)
     {
-        _x[i] = other._x[i];
-        _y[i] = other._y[i];
+    	int tmp = other._x[i];
+        _x[i] = other._y[i];
+        _y[i] = tmp;
     }
 }
 
@@ -56,8 +57,9 @@ XYarray& XYarray::operator=(const XYarray& other)
 
         for (size_t i = 0; i < _length; i++)
         {
-            _x[i] = other._x[i];
-            _y[i] = other._y[i];
+        	int tmp = other._x[i];
+            _x[i] = other._y[i];
+            _y[i] = tmp;
         }
     }
     return *this;
