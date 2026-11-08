@@ -9,6 +9,7 @@
 #define BRUCH_H_
 
 
+
 void kuerzen(int& z, int& n);
 class Bruch{
 private:

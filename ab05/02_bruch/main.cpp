@@ -32,6 +32,12 @@ int main()
     d *= e;
     cout << "d: "<< d.zaehler() << "/" << d.nenner() << endl;
 
+
+    Bruch f(-15,3);
+    Bruch g(15,-3);
+    cout << "f: "<< f.zaehler() << "/" << f.nenner() << endl;
+    cout << "g: "<< g.zaehler() << "/" << g.nenner() << endl;
+
 	return 0;
 }
 

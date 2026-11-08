@@ -24,21 +24,18 @@ int ggt1(int a, int b)
 
 int ggt2(int a, int b)
 {
-    while(a != 0 && b != 0)
+	if(a < 0)
+		a = -a;
+	if(b < 0)
+		b = -b;
+
+    while(b != 0)
     {
-        if(a > b)
-        {
-            a = a % b;
-        }
-        else if(b > a)
-        {
-            b = b % a;
-        }
+    	int rest = a % b;
+    	a = b;
+    	b = rest;
     }
-    if(a == 0)
-        return b;
-    else
-        return a;
+    return a;
 }
 
 

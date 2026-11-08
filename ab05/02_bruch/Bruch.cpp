@@ -34,7 +34,6 @@ Bruch& Bruch::operator*=(const Bruch& other)
     }
 bool operator==(const Bruch& a, const Bruch& b)
 	{
-
 		return (a.zaehler() == b.zaehler() && a.nenner() == b.nenner())? true : false;
 	}
 bool operator!=(const Bruch& a, const Bruch& b)
@@ -48,6 +47,11 @@ Bruch operator*(Bruch a,const Bruch& b)
 
 void kuerzen(int& z, int& n)
 {
+	if(n < 0)
+	{
+		z= -z;
+		n= -n;
+	}
     int ggt = ggt2(z, n);
     z /= ggt;
     n /= ggt;

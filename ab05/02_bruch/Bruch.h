@@ -7,7 +7,7 @@
 
 #ifndef BRUCH_H_
 #define BRUCH_H_
-#error MEINE_BRUCH_H_WIRD_BENUTZT
+
 
 
 void kuerzen(int& z, int& n);

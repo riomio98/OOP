@@ -6,7 +6,6 @@
  */
 #include "ggts.h"
 
-
 int ggt1(int a, int b)
 {
     while(a != b)

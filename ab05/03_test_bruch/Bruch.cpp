@@ -14,7 +14,6 @@ Bruch::Bruch(int z, int n)
 	        :_z(z), _n(n)
 	{
         kuerzen(_z, _n);
-
 	}
 int Bruch::zaehler() const
 	{
@@ -24,6 +23,15 @@ int Bruch::nenner() const
 	{
 		return _n;
 	}
+
+
+Bruch& Bruch::operator*=(const Bruch& other)
+    {
+        _z *= other._z;
+        _n *= other._n;
+        kuerzen(_z, _n);
+        return *this;
+    }
 bool operator==(const Bruch& a, const Bruch& b)
 	{
 
@@ -33,13 +41,6 @@ bool operator!=(const Bruch& a, const Bruch& b)
 	{
 		return !(a == b);
 	}
-Bruch& Bruch::operator*=(const Bruch& other)
-    {
-        _z *= other._z;
-        _n *= other._n;
-        kuerzen(_z, _n);
-        return *this;
-    }
 Bruch operator*(Bruch a,const Bruch& b)
 {
     return a *= b;
@@ -47,13 +48,13 @@ Bruch operator*(Bruch a,const Bruch& b)
 
 void kuerzen(int& z, int& n)
 {
+	if(n < 0)
+	{
+		z= -z;
+		n= -n;
+	}
     int ggt = ggt2(z, n);
     z /= ggt;
     n /= ggt;
-    if(n < 0)
-    {
-        z = -z;
-        n = -n;
-    }
 }
 

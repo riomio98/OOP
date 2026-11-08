@@ -19,7 +19,7 @@ public:
 	{
 	}
 	int get_x() const;
-	int Point::get_y() const;
+	int get_y() const;
 	Point& operator+=(const Point& other);
 
 };
