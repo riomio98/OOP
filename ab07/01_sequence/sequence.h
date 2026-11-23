@@ -10,6 +10,7 @@
 
 #include <cstddef>
 #include <utility>
+#include <stdexcept>
 
 template <typename T>
 class Sequence{
@@ -28,9 +29,11 @@ public:
 	size_t capacity() const;
 	void trim(); // nur so viele elemente wie gebraucht
 	void clear();
-	void is_empty() const;
+	bool is_empty() const;
+	bool is_full() const;
 	T& operator[](size_t pos);
 	const T& operator[](size_t pos) const;
+	bool operator==(const Sequence& other) const;
 	void insert(size_t pos, const T& ele); // größe anpassen
 	void push_back(const T& ele);
 	void remove(size_t pos);
@@ -42,17 +45,47 @@ public:
 
 template<typename T>
 void Sequence<T>::recap(size_t size) {
-
+	if(_cap == size)
+	{
+		return;
+	}
+	T* tmp = new T[size];
+	if(size == 0)
+	{
+		throw std::runtime_error("cap must be > 0");
+	}
+	size_t i = 0;
+	while(i < size && i < _size)
+	{
+		tmp[i] = _arr[i];
+		i++;
+	}
+	delete [] _arr;
+	_arr = tmp;
+	_cap = size;
+	if(_size > _cap)
+	{
+		_size = _cap;
+	}
 }
 
 template<typename T>
 void Sequence<T>::grow_on_demand() {
+	if(is_full())
+	{
+		recap(_cap*2);
+	}
 }
 
 template<typename T>
 Sequence<T>::Sequence(size_t cap)
-	:_cap(cap), _size(0)
+	:_size(0)
 {
+	if(cap == 0)
+	{
+		throw std::runtime_error("cap must be > 0");
+	}
+	_cap = cap;
 	_arr = new T[cap];
 }
 
@@ -86,47 +119,124 @@ Sequence<T>::~Sequence() {
 
 template<typename T>
 size_t Sequence<T>::size() const {
-	return 0;
+	return _size;
 }
 
 template<typename T>
 size_t Sequence<T>::capacity() const {
-	return 0;
+	return _cap;
 }
 
 template<typename T>
-void Sequence<T>::is_empty() const {
-	return;
+bool Sequence<T>::is_empty() const {
+	return (_size == 0);
+}
+template<typename T>
+bool Sequence<T>::is_full() const {
+	return (_size == _cap);
 }
 
 template<typename T>
-T& Sequence<T>::operator [](size_t pos) {
+T& Sequence<T>::operator[](size_t pos) {
+	if(pos >= _size)
+	{
+		throw std::runtime_error("Sequence::operator[]: pos out of bounds");
+	}
+
 	return _arr[pos];
 }
 
 template<typename T>
-const T& Sequence<T>::operator [](size_t pos) const {
+const T& Sequence<T>::operator[](size_t pos) const {
+	if(pos >= _size)
+	{
+		throw std::runtime_error("Sequence::operator[]: pos out of bounds");
+	}
 	return _arr[pos];
 }
 
 template<typename T>
 void Sequence<T>::insert(size_t pos, const T &ele) {
-	return;
+	if(pos > _size)
+	{
+		throw std::runtime_error("insert(): out of bounds");
+	}
+	if(is_full())
+	{
+		grow_on_demand();
+	}
+	for(size_t i = _size; i > pos; i--)
+	{
+		_arr[i] = _arr[i-1];
+	}
+	_size++; // nachher erhöhen
+	_arr[pos] = ele;
 }
 
 template<typename T>
 void Sequence<T>::push_back(const T &ele) {
-	return;
+	insert(_size,ele);
 }
 
 template<typename T>
 void Sequence<T>::remove(size_t pos) {
-	return;
+	if(is_empty())
+	{
+		throw std::runtime_error("remove(): empty, underflow");
+	}
+	if(pos >= _size)
+	{
+		throw std::runtime_error("remove(): out of bounds");
+	}
+	_size--; // vorher erniedrigen
+	for(size_t i = pos; i < _size; i++)
+	{
+		_arr[i] = _arr[i+1];
+	}
+}
+
+template<typename T>
+void Sequence<T>::trim() {
+	if(_size < _cap && _size > 0)
+	{
+		recap(_size);
+	}
+}
+
+template<typename T>
+void Sequence<T>::clear() {
+	_size = 0;
+}
+
+template<typename T>
+bool Sequence<T>::operator ==(const Sequence &other) const {
+
+	if(_size == other._size)
+	{
+		size_t idx = 0;
+		while(idx < _size and _arr[idx] == other._arr[idx])
+		{
+			idx++;
+		}
+		if(idx == _size)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 template<typename T>
 bool Sequence<T>::remove_ele(const T &ele) {
-	return true;
+	for(size_t i= 0; i<_size; i++)
+	{
+		if(_arr[i] == ele)
+		{
+			remove(i);
+			return true;
+		}
+	}
+	return false;
 }
 
 #endif /* SEQUENCE_H_ */
