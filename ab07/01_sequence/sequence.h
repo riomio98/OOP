@@ -39,9 +39,33 @@ public:
 	void remove(size_t pos);
 	bool remove_ele(const T& ele);
 
+	class iterator {
+	friend class Sequence<T>;
+	T* _current;
+	iterator(T* current) : _current{current} {
+	}
+	public:
+	iterator& operator++() {
+		_current++;
+		return *this;
+	}
+	T& operator*() {
+		return *_current;
+	}
+	bool operator!=(iterator it) {
+		return _current != it._current;
+	}
+	};
+	iterator begin() {
+		return iterator(_arr);
+	}
+	iterator end() {
+		return iterator(_arr + _size);
+	}
 
 
-};
+	};
+
 
 template<typename T>
 void Sequence<T>::recap(size_t size) {
